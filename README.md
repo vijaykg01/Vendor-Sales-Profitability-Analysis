@@ -364,3 +364,24 @@ Aspiring Data Analyst
 
 **Skills:**
 `SQL` • `Python` • `Pandas` • `Excel` • `Power BI` • `Data Analysis`
+
+
+<img width="443" height="527" alt="Screenshot 2026-10-05 140339" src="https://github.com/user-attachments/assets/a1ab1f51-7650-4e38-854e-b07979bd7129" />
+<img width="293" height="492" alt="Screenshot 2026-10-05 140412" src="https://github.com/user-attachments/assets/03560db6-5d5d-472a-b136-d04282861674" />
+<img width="291" height="509" alt="Screenshot 2026-10-05 140423" src="https://github.com/user-attachments/assets/ffdd8e00-1bc5-4fff-8479-35f876cebc60" />
+<img width="278" height="501" alt="Screenshot 2026-10-05 140434" src="https://github.com/user-attachments/assets/4c07d531-e61d-4c34-a147-64c4790cb730" />
+<img width="290" height="422" alt="Screenshot 2026-10-05 140456" src="https://github.com/user-attachments/assets/7e84084e-4d0c-42a2-a59f-281f7664f1d5" />
+<img width="290" height="452" alt="Screenshot 2026-10-05 140507" src="https://github.com/user-attachments/assets/054fe21f-4375-487d-8ac4-4d680e697ac7" />
+<img width="291" height="403" alt="Screenshot 2026-10-05 140518" src="https://github.com/user-attachments/assets/f6677cb1-c85c-4ec2-ba05-83b365907974" />
+<img width="286" height="361" alt="Screenshot 2026-10-05 140537" src="https://github.com/user-attachments/assets/daac9332-de1b-488b-aac8-7bcd0c32985e" />
+<img width="283" height="425" alt="Screenshot 2026-10-05 140545" src="https://github.com/user-attachments/assets/ab1e6352-d3ef-414c-ac17-1c49c38f1bf9" />
+
+
+
+
+
+
+
+
+
+
