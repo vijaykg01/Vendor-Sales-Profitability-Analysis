@@ -1,269 +1,322 @@
-# Vendor Sales & Profitability Analysis
+# Vendor Performance Analysis | Python • SQL • Pandas • Visualization
 
-## 📌 Project Overview
+## Project Overview
 
-This project analyzes vendor sales and profitability data using **Python, Pandas, SQLite, Matplotlib, and Seaborn**.
+**Vendor Performance Analysis** is a data analytics project focused on evaluating vendor and brand-level sales performance, profitability, and operational metrics.
 
-The main objective is to explore vendor and brand-level performance, understand sales and profit patterns, identify outliers, and find **brands with relatively low sales but high profit margins** that may have potential for further business analysis.
+The project combines **SQL, Python, Pandas, SQLite, Matplotlib, and Seaborn** to transform vendor sales data into meaningful business insights.
 
----
-
-## 🎯 Objectives
-
-* Analyze vendor sales performance.
-* Explore sales and profitability distributions.
-* Identify potential outliers in numerical data.
-* Analyze relationships between numerical variables.
-* Compare vendors and brands based on sales and profit margin.
-* Identify brands with **low sales but high profit margins**.
-* Visualize important patterns using charts and plots.
+The analysis focuses on understanding vendor contribution, sales performance, gross profit, profit margins, product performance, and identifying brands with **lower sales but stronger profit margins**.
 
 ---
 
-## 🛠️ Technologies Used
+## Business Objective
 
-* **Python**
-* **Pandas** – Data manipulation and analysis
-* **NumPy** – Numerical operations
-* **Matplotlib** – Data visualization
-* **Seaborn** – Statistical visualization
-* **SQLite** – Database connection and SQL queries
-* **Jupyter Notebook** – Analysis environment
+The primary objective of this project is to evaluate vendor performance and identify opportunities for improving sales and profitability.
+
+The analysis aims to answer key business questions such as:
+
+* Which vendors generate the highest sales?
+* Which vendors contribute the most gross profit?
+* Which vendors have the highest profit margins?
+* Which brands/products perform strongly?
+* Which brands have low sales but high profit margins?
+* What relationships exist between sales, quantity, and profitability?
+* Which vendors or brands may require further business attention?
 
 ---
 
-## 📂 Project Structure
+## Dataset
+
+The analysis is based on vendor sales data containing summarized information about vendors, products, sales quantities, sales values, and profitability.
+
+### Key Analytical Attributes
+
+* Vendor
+* Product / Brand
+* Total Sales Quantity
+* Total Sales Dollars
+* Gross Profit
+* Profit Margin
+* Product-related performance metrics
+
+The dataset is analyzed at both **vendor and brand/product levels** to understand overall business performance.
+
+---
+
+## Tools & Technologies
+
+| Tool                 | Purpose                           |
+| -------------------- | --------------------------------- |
+| **Python**           | Data analysis and processing      |
+| **Pandas**           | Data manipulation and aggregation |
+| **NumPy**            | Numerical analysis                |
+| **SQLite**           | SQL-based data querying           |
+| **Matplotlib**       | Data visualization                |
+| **Seaborn**          | Statistical visualization         |
+| **Jupyter Notebook** | Analysis environment              |
+
+---
+
+## Project Workflow
 
 ```text
-Vendor-Sales-Analysis/
-│
-├── Vendor_Sales_Analysis.ipynb
-├── inventory.db
-└── README.md
+Vendor Sales Data
+        │
+        ▼
+     SQLite
+   SQL Analysis
+        │
+        ▼
+      Python
+        │
+        ├── Data Exploration
+        ├── Data Cleaning
+        ├── Aggregation
+        ├── Statistical Analysis
+        └── Business Analysis
+        │
+        ▼
+   Visualization
+        │
+        ├── Distribution Analysis
+        ├── Outlier Analysis
+        ├── Correlation Analysis
+        └── Vendor / Brand Analysis
+        │
+        ▼
+ Business Insights
 ```
 
 ---
 
-## 🔄 Analysis Workflow
+## SQL Analysis
 
-### 1. Import Required Libraries
+SQLite is used to query and analyze the vendor sales data.
 
-The project uses Python libraries such as:
+The analysis includes:
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import sqlite3
-```
+### Vendor Performance
 
-These libraries are used for data extraction, cleaning, analysis, and visualization.
+* Vendor-level sales analysis
+* Sales quantity analysis
+* Gross profit analysis
+* Profit margin analysis
 
----
+### Brand Performance
 
-### 2. Connect to SQLite Database
+* Brand-level sales analysis
+* Average profit margin
+* Identification of high-margin brands
 
-A connection is established with the SQLite database:
+### Business Filtering
 
-```python
-conn = sql.connect("inventory.db")
-```
+The analysis focuses on records with positive:
 
-The analysis retrieves data from the `vendor_sales_summary` table.
+* Sales
+* Gross Profit
+* Profit Margin
+* Sales Quantity
 
----
-
-### 3. Load Vendor Sales Data
-
-The vendor summary data is loaded into a Pandas DataFrame using SQL:
-
-```sql
-SELECT *
-FROM vendor_sales_summary
-```
-
-This allows the data to be analyzed using Pandas and Python.
+This provides a cleaner basis for evaluating profitable vendor and brand performance.
 
 ---
 
-### 4. Exploratory Data Analysis
+## Python Analysis
 
-Summary statistics are generated to understand the numerical variables:
+Python and Pandas are used for exploratory data analysis and business analysis.
 
-```python
-df.describe().T
-```
+### Exploratory Data Analysis
 
-This helps examine:
+The project examines:
 
-* Count
+* Dataset structure
+* Numerical statistics
+* Data distributions
+* Vendor and brand frequency
+* Relationships between numerical variables
+
+### Statistical Analysis
+
+Descriptive statistics are used to understand:
+
 * Mean
 * Standard deviation
-* Minimum
-* Maximum
+* Minimum and maximum values
 * Quartiles
+* Distribution patterns
 
 ---
 
-### 5. Distribution Analysis
+## Outlier Analysis
 
-Histograms with KDE curves are used to understand the distribution of numerical variables.
+Boxplots are used to identify potential outliers across important numerical variables.
 
-This helps identify:
+This helps identify vendors, products, or transactions with unusually high or low values.
 
-* Data distribution
-* Skewness
-* Concentration of values
-* Potential unusual observations
+Potential outliers can then be investigated further to determine whether they represent:
 
----
-
-### 6. Outlier Detection
-
-Boxplots are created for numerical columns to identify potential outliers.
-
-```python
-sns.boxplot(y=df[col])
-```
-
-This helps detect values that are significantly different from the rest of the dataset.
+* Exceptional business performance
+* Large-volume vendors
+* Unusual transactions
+* Data quality issues
 
 ---
 
-### 7. Data Filtering
+## Correlation Analysis
 
-Records are filtered to focus on vendors with meaningful sales and profitability:
+A correlation matrix is used to examine relationships between numerical business metrics.
 
-```sql
-WHERE GrossProfit > 0
-  AND ProfitMargin > 0
-  AND TotalSalesQuantity > 0
-```
+The analysis helps understand relationships between measures such as:
 
-This removes records that do not meet the required positive sales and profitability conditions.
+* Sales
+* Sales Quantity
+* Gross Profit
+* Profit Margin
 
----
-
-### 8. Vendor and Brand Analysis
-
-Categorical variables such as:
-
-* `VendorName`
-* `Description`
-
-are analyzed using count plots.
-
-The analysis focuses on the most frequently occurring vendors and product/brand descriptions.
+A heatmap is used to make these relationships easier to interpret.
 
 ---
 
-### 9. Correlation Analysis
+## Vendor & Brand Performance
 
-A correlation matrix is calculated for numerical variables:
-
-```python
-correlation_matrix = df[numerical_col].corr()
-```
-
-A heatmap is then used to visualize relationships between numerical variables.
-
-This helps identify variables that have stronger positive or negative relationships.
-
----
-
-## 📊 Brand Performance Analysis
-
-Brand-level performance is calculated using:
+Vendor and brand performance is evaluated using aggregated metrics such as:
 
 * **Total Sales Dollars**
+* **Total Sales Quantity**
+* **Gross Profit**
 * **Average Profit Margin**
 
-```python
-brand_performance = df.groupby('Description').agg({
-    'TotalSalesDollars':'sum',
-    'ProfitMargin':'mean'
-}).reset_index()
-```
-
-This provides a summarized view of brand performance.
+This allows the analysis to distinguish between high-volume vendors, highly profitable vendors, and vendors with stronger margins.
 
 ---
 
-## 🔎 Identifying Target Brands
+## Low-Sales / High-Margin Analysis
 
-The project calculates threshold values using percentiles:
+One of the key analytical components of the project is identifying brands with:
 
-* **15th percentile of sales** → Low-sales threshold
-* **85th percentile of profit margin** → High-margin threshold
+> **Relatively low sales but relatively high profit margins**
 
-Brands meeting both conditions are identified:
+Percentile-based thresholds are used to identify these brands.
 
-```python
-(brand_performance["TotalSalesDollars"] <= low_sales_threshold)
-&
-(brand_performance["ProfitMargin"] >= high_margin_threshold)
-```
-
-These brands represent products with:
-
-> **Low sales but relatively high profit margins**
-
-Such brands can be further investigated to understand why their sales volume is low despite having strong margins.
-
----
-
-## 📈 Visualizations
-
-The project includes several visualizations:
-
-### Distribution Plots
-
-Used to understand numerical variable distributions.
-
-### Boxplots
-
-Used for detecting potential outliers.
-
-### Count Plots
-
-Used to analyze the frequency of vendors and brands.
-
-### Correlation Heatmap
-
-Used to understand relationships between numerical variables.
-
-### Scatter Plot
-
-Used to compare:
+The analysis compares:
 
 * Total Sales Dollars
 * Profit Margin
 
-The scatter plot also highlights the identified target brands.
+Brands falling below the defined sales threshold while exceeding the defined profit-margin threshold are selected for further investigation.
+
+This helps identify potential opportunities where improving sales volume could potentially increase overall profitability.
 
 ---
 
-## 💡 Key Business Insight
+## Visualizations
 
-The analysis focuses on identifying brands that have:
+The project uses several visualization techniques:
 
-**Low Sales + High Profit Margin**
+### Distribution Plots
 
-These brands may represent potential opportunities for further investigation. Possible business questions include:
+Used to understand the distribution of numerical business metrics.
 
-* Why are these products generating low sales?
-* Is customer awareness low?
-* Are these products under-promoted?
-* Is pricing affecting sales volume?
-* Could additional marketing increase sales while maintaining margins?
-* Are these products suitable for targeted promotions?
+### Boxplots
 
-> Note: The notebook identifies these brands based on the defined statistical thresholds. Further business investigation would be required before making recommendations.
+Used to identify potential outliers.
+
+### Count Plots
+
+Used to understand vendor and brand frequency.
+
+### Correlation Heatmap
+
+Used to identify relationships between numerical variables.
+
+### Scatter Plot
+
+Used to analyze the relationship between:
+
+**Total Sales Dollars vs. Profit Margin**
+
+The scatter plot also highlights brands that meet the low-sales/high-margin criteria.
 
 ---
 
-## 🚀 How to Run the Project
+## Business Insights
+
+The analysis provides a framework for understanding vendor and brand performance from multiple perspectives.
+
+Potential business questions generated from the analysis include:
+
+* Should high-margin but low-sales brands receive additional marketing?
+* Are high-sales vendors also generating strong profit margins?
+* Which vendors contribute significantly to overall profitability?
+* Are certain vendors heavily dependent on sales volume?
+* Which brands have potential for growth?
+* Are there vendors with strong sales but relatively weak margins?
+
+These insights can support further investigation into **pricing, promotions, inventory strategy, vendor relationships, and product positioning**.
+
+---
+
+## Key Skills Demonstrated
+
+### Python
+
+* Pandas
+* NumPy
+* Data Cleaning
+* Data Transformation
+* GroupBy Analysis
+* Aggregation
+* Exploratory Data Analysis
+
+### SQL
+
+* SQLite
+* SQL Queries
+* Filtering
+* Aggregation
+* `GROUP BY`
+* Business Metrics
+
+### Data Analysis
+
+* Descriptive Statistics
+* Percentile Analysis
+* Outlier Detection
+* Correlation Analysis
+* Vendor Performance Analysis
+* Brand Performance Analysis
+
+### Data Visualization
+
+* Matplotlib
+* Seaborn
+* Distribution Plots
+* Boxplots
+* Heatmaps
+* Scatter Plots
+
+---
+
+## Project Structure
+
+```text
+Vendor-Performance-Analysis/
+│
+├── Vendor_Performance_Analysis.ipynb
+├── inventory.db
+└── README.md
+```
+
+| File                                | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
+| `Vendor_Performance_Analysis.ipynb` | Complete Python-based vendor performance analysis |
+| `inventory.db`                      | SQLite database containing the vendor sales data  |
+| `README.md`                         | Project documentation                             |
+
+---
+
+## How to Run the Project
 
 ### 1. Clone the Repository
 
@@ -271,21 +324,13 @@ These brands may represent potential opportunities for further investigation. Po
 git clone <your-repository-url>
 ```
 
-### 2. Navigate to the Project Folder
-
-```bash
-cd Vendor-Sales-Analysis
-```
-
-### 3. Install Required Libraries
+### 2. Install Required Libraries
 
 ```bash
 pip install pandas numpy matplotlib seaborn
 ```
 
-SQLite is included with Python, so no separate SQLite installation is normally required.
-
-### 4. Open the Jupyter Notebook
+### 3. Open the Notebook
 
 ```bash
 jupyter notebook
@@ -294,47 +339,28 @@ jupyter notebook
 Open:
 
 ```text
-Vendor_Sales_Analysis.ipynb
+Vendor_Performance_Analysis.ipynb
 ```
 
-### 5. Run the Notebook
+### 4. Run the Notebook
 
-Run the cells sequentially to reproduce the analysis and visualizations.
-
----
-
-## 📌 Skills Demonstrated
-
-This project demonstrates practical experience in:
-
-* Python for Data Analysis
-* Pandas
-* NumPy
-* SQL
-* SQLite
-* Exploratory Data Analysis (EDA)
-* Data Filtering
-* Data Aggregation
-* GroupBy Analysis
-* Statistical Analysis
-* Correlation Analysis
-* Outlier Detection
-* Data Visualization
-* Business Insight Generation
+Run the notebook cells sequentially to reproduce the analysis and visualizations.
 
 ---
 
-## 👨‍💻 Author
+## Key Takeaway
+
+This project demonstrates an end-to-end **vendor performance analytics workflow**, combining SQL-based data extraction with Python-based exploratory analysis, statistical analysis, visualization, and business insight generation.
+
+The analysis demonstrates how sales and profitability data can be used to identify **high-performing vendors, profitable brands, performance gaps, and potential growth opportunities**.
+
+---
+
+## Author
 
 **Vijay K G**
 
 Aspiring Data Analyst
 
 **Skills:**
-`SQL` | `Python` | `Pandas` | `Excel` | `Power BI` | `Data Analysis`
-
----
-
-## ⭐ Project Purpose
-
-This project was created as part of my journey toward becoming a **Data Analyst**, with a focus on applying Python, SQL, and data visualization techniques to a practical business dataset.
+`SQL` • `Python` • `Pandas` • `Excel` • `Power BI` • `Data Analysis`
